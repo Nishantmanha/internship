@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Login Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f26c6c;
+        }
+
+        .background {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(to bottom, #4d7b9a, #92c6e9);
+            background-size: 100% 300px;
+            background-position: 0% 100%;
+            transition: background-position 0.5s;
+        }
+
+        .illustration {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: illustration-animation 2s infinite;
+        }
+
+        .illustration img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .login-form {
+            width: 300px;
+            background-color: #657df5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transform: scale(0.5);
+            opacity: 0;
+            transition: transform 0.5s, opacity 0.5s;
+        }
+
+        .login-form:hover {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .input-field:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-btn {
+            width: 100%;
+            height: 40px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background-color: #12dd19;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #020000;
+        }
+
+        .signup {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #02273b;
+        }
+
+        .signup a {
+            text-decoration: none;
+            color: #01070b;
+        }
+
+        .signup a:hover {
+            color: #000306;
+        }
+        /* Animations */
+
+        @keyframes illustration-animation {
+            0% {
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .background:hover {
+            background-position: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="illustration">
+            <img src="illustration.svg" alt="application form">
+        </div>
+        <div class="login-form">
+            <h2>Login</h2>
+            <form>
+                <input type="text" placeholder="Username" class="input-field" id="username">
+                <input type="password" placeholder="Password" class="input-field" id="password">
+                <button class="login-btn" id="login-btn">Login</button>
+                <p class="forgot-password">Forgot password?</p>
+                <p class="signup">Don't have an account? <a href="#" id="signup-link">Sign up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const loginBtn = document.getElementById('login-btn');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+
+        loginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Add login functionality here
+            console.log('Login button clicked!');
+        });
+
+        usernameInput.addEventListener('focus', () => {
+            usernameInput.classList.add('input-focus');
+        });
+
+        username
