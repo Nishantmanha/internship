@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Image Slider</title>
+    <style>
+        /* Slider Container Styles */
+        .slider-container {
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
+        }
+
+        /* Slider Styles */
+        .slider {
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Slide Styles */
+        .slide {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Image Styles */
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Navigation Controls Styles */
+        .nav-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 100px;
+        }
+
+        /* Button Styles */
+        .prev-btn, .next-btn {
+            background-color: #837b7b;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Button Hover Styles */
+        .prev-btn:hover, .next-btn:hover {
+            background-color: #090101;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .slider-container {
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .slider-container {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider">
+            <!-- Slide 1 -->
+            <div class="slide" id="slide-1">
+                <img src="c:\Users\anoop\Downloads\wp7179831-indian-military-academy-wallpapers.jpg" alt="Image 1">
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide" id="slide-2">
+                <img src="c:\Users\anoop\Downloads\wp4639042-national-defence-academy-wallpapers.jpg" alt="Image 2">
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide" id="slide-3">
+                <img src="c:\Users\anoop\Downloads\wp7179880-indian-military-academy-wallpapers.jpg" alt="Image 3">
+            </div>
+
+            <!-- Add more slides as needed -->
+        </div>
+
+        <div class="nav-controls">
+            <button class="prev-btn" id="prev-btn">Previous</button>
+            <button class="next-btn" id="next-btn">Next</button>
+        </div>
+    </div>
+
+    <script>
+        // Get the slider, slides, and navigation controls
+        const slider = document.querySelector('.slider');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.querySelector('#prev-btn');
+        const nextBtn = document.querySelector('#next-btn');
+
+        // Initialize the current slide index
+        let currentSlide = 0;
+
+        // Add event listeners for navigation controls
+        prevBtn.addEventListener('click', () => {
+            currentSlide--;
+            updateSlide();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide++;
+            updateSlide();
+        });
+
+        // Auto-slide functionality
+        setInterval(() => {
+            currentSlide++;
+            updateSlide();
+        }, 5000);
+
+        // Update slide function
+        function updateSlide() {
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            } else if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+
+            slides.forEach((slide, index) => {
+                slide.style.transform = `translateX(${(index - currentSlide) * 100}%)`;
+            });
+        }
+    </script>
+</body>
+</html>
